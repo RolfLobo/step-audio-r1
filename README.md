@@ -1,4 +1,4 @@
-# Step-Audio-R1
+# Step-Audio-R1/R1.5
 <p align="center">
   <img src="assets/logo.png"  height=100>
 </p>
@@ -56,18 +56,11 @@ Step-Audio-R1.5 marks a shift from purely verifiable-reward-style optimization t
 This transition is motivated by a simple observation: strong objective scores alone do not guarantee a natural conversational experience. By incorporating preference-driven alignment for spoken interaction, Step-Audio-R1.5 maintains robust analytical reasoning while substantially improving the overall interactive feel of long-form audio dialogue.
 
 ### Benchmark Results
-Across eight speech-to-text benchmarks, Step-Audio-R1.5 improves the overall average score from `72.50` in Step-Audio-R1 to `77.97`, remains highly competitive with leading commercial systems, and achieves the best reported result on **Step-SPQA**.
+The figure below compares the average score across all eight speech-to-text benchmarks. Step-Audio-R1.5 substantially improves over Step-Audio-R1 and remains highly competitive with other mainstream large models.
 
-| Model | **Avg.** | **Audio MC** | **Big Bench** | **MMSU** | **MMAU** | **Spoken MQA** | **Step-Caption** | **Step-DU** | **Step-SPQA** |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Gemini 3 Flash | 77.56 | <u>56.42</u> | 96.80 | 76.64 | 75.90 | 95.37 | 65.12 | 80.46 | 73.80 |
-| Gemini 3 Pro | **79.67** | **66.37** | **99.40** | **83.70** | **79.80** | **96.56** | **75.55** | 72.41 | 63.60 |
-| qwen3.5-omni-flash | 70.55 | 25.44 | 59.59 | 72.50 | 77.20 | 93.39 | 73.57 | <u>83.91</u> | 78.80 |
-| qwen3.5-omni-plus | 75.77 | 39.38 | 73.03 | <u>82.74</u> | <u>79.60</u> | <u>96.03</u> | <u>74.93</u> | **85.63** | <u>74.80</u> |
-| Step-Audio-R1 | 72.50 | 24.61 | 98.29 | 75.68 | 77.00 | 95.06 | 70.60 | 64.37 | 74.36 |
-| **Step-Audio-R1.5** | <u>77.97</u> | 41.15 | <u>98.30</u> | 79.03 | 77.90 | 93.74 | 71.48 | 82.76 | **79.40** |
-
-Best results are in bold, and second-best results are underlined.
+<p align="center">
+    <img src="assets/R1.5_rank.png" width="80%"/>
+<p>
 
 ## Overview of R1.1
 
