@@ -5,13 +5,15 @@
 
 <div align="center">
     <a href="https://modelscope.cn/studios/stepfun-ai/Step-Audio-R1"><img src="https://img.shields.io/static/v1?label=Demo%20Page&message=Web&color=green"></a> &ensp;
-  <a href="https://arxiv.org/pdf/2511.15848"><img src="https://img.shields.io/static/v1?label=Tech%20Report&message=Arxiv&color=red"></a> &ensp;
+  <a href="https://arxiv.org/abs/2604.25719"><img src="https://img.shields.io/static/v1?label=Step-Audio-R1.5&message=Arxiv&color=red"></a> &ensp;
   <a href="https://huggingface.co/stepfun-ai/Step-Audio-R1"><img src="https://img.shields.io/static/v1?label=Step-Audio-R1.1&message=HuggingFace&color=yellow"></a> &ensp;
     <a href="https://modelscope.cn/models/stepfun-ai/Step-Audio-R1.1"><img src="https://img.shields.io/static/v1?label=Step-Audio-R1.1&message=ModelScope&color=blue"></a> &ensp;
   <a href="https://www.stepfun.com/studio/audio?tab=conversation"><img src="https://img.shields.io/static/v1?label=Space%20Playground&message=Studio&color=yellow"></a> &ensp;
 </div>
 
 ## 🔥🔥🔥 News!!
+* Apr 29, 2026: 🚀 We release the technical report of **Step-Audio-R1.5** ([ArXiv](https://arxiv.org/abs/2604.25719); [PDF](Step-Audio-R1.5.pdf)).
+* Apr 29, 2026: 📦 We open-source three in-house benchmarks from **Step-Audio-R1.5** under `benchmarks/Step-Audio-R1.5/`: `step_caption`, `step_spqa`, and `step_dialogue_understanding`.
 * Jan 14, 2026: 🚀 We release the inference code and model weights of **Step-Audio-R1.1** ([HuggingFace](https://huggingface.co/stepfun-ai/Step-Audio-R1.1); [ModelScope](https://modelscope.cn/models/stepfun-ai/Step-Audio-R1.1))
 * Nov 27, 2025: 🎉 We release the inference code and model weights of **Step-Audio-R1** ([HuggingFace](https://huggingface.co/stepfun-ai/Step-Audio-R1); [ModelScope](https://modelscope.cn/models/stepfun-ai/Step-Audio-R1))
 * Nov 27, 2025: 🎮 We released the [HF Space Playground](https://www.stepfun.com/studio/audio?tab=conversation)
@@ -25,6 +27,47 @@ WeChat Developer Group
 - [x] Inference Code (vLLM)
 - [x] Online demo (Gradio)
 - [x] Model Checkpoints
+
+## 📚 Open Benchmarks
+
+We release three standalone evaluation benchmarks from Step-Audio-R1.5 under `benchmarks/Step-Audio-R1.5/`:
+
+- `step_caption`
+- `step_spqa`
+- `step_dialogue_understanding`
+
+Please see `benchmarks/Step-Audio-R1.5/README.md` and the benchmark-local READMEs for dataset details.
+
+## Overview of R1.5
+
+### To-Do List
+- [x] Technical report release ([ArXiv](https://arxiv.org/abs/2604.25719); [PDF](Step-Audio-R1.5.pdf))
+- [x] Open-source benchmark release (`benchmarks/Step-Audio-R1.5/`)
+- [ ] Inference code for Step-Audio-R1.5
+
+### Introduction
+Step-Audio-R1.5 is our latest audio reasoning model, described in the [technical report](https://arxiv.org/abs/2604.25719) and mirrored in this repository as [Step-Audio-R1.5.pdf](Step-Audio-R1.5.pdf).
+
+While recent reasoning-oriented audio models benefit from extended Chain-of-Thought on objective benchmarks, they are often optimized with verifiable reward signals that compress rich auditory interaction into isolated labels. Step-Audio-R1.5 is designed to move beyond that limitation: instead of only maximizing benchmark correctness, it aims to preserve prosodic naturalness, emotional continuity, and immersive long-turn spoken interaction.
+
+### RLHF for Audio Reasoning
+Step-Audio-R1.5 marks a shift from purely verifiable-reward-style optimization toward **Reinforcement Learning from Human Feedback (RLHF)** in audio reasoning.
+
+This transition is motivated by a simple observation: strong objective scores alone do not guarantee a natural conversational experience. By incorporating preference-driven alignment for spoken interaction, Step-Audio-R1.5 maintains robust analytical reasoning while substantially improving the overall interactive feel of long-form audio dialogue.
+
+### Benchmark Results
+Across eight speech-to-text benchmarks, Step-Audio-R1.5 improves the overall average score from `72.50` in Step-Audio-R1 to `77.97`, remains highly competitive with leading commercial systems, and achieves the best reported result on **Step-SPQA**.
+
+| Model | **Avg.** | **Audio MC** | **Big Bench** | **MMSU** | **MMAU** | **Spoken MQA** | **Step-Caption** | **Step-DU** | **Step-SPQA** |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Gemini 3 Flash | 77.56 | <u>56.42</u> | 96.80 | 76.64 | 75.90 | 95.37 | 65.12 | 80.46 | 73.80 |
+| Gemini 3 Pro | **79.67** | **66.37** | **99.40** | **83.70** | **79.80** | **96.56** | **75.55** | 72.41 | 63.60 |
+| qwen3.5-omni-flash | 70.55 | 25.44 | 59.59 | 72.50 | 77.20 | 93.39 | 73.57 | <u>83.91</u> | 78.80 |
+| qwen3.5-omni-plus | 75.77 | 39.38 | 73.03 | <u>82.74</u> | <u>79.60</u> | <u>96.03</u> | <u>74.93</u> | **85.63** | <u>74.80</u> |
+| Step-Audio-R1 | 72.50 | 24.61 | 98.29 | 75.68 | 77.00 | 95.06 | 70.60 | 64.37 | 74.36 |
+| **Step-Audio-R1.5** | <u>77.97</u> | 41.15 | <u>98.30</u> | 79.03 | 77.90 | 93.74 | 71.48 | 82.76 | **79.40** |
+
+Best results are in bold, and second-best results are underlined.
 
 ## Overview of R1.1
 

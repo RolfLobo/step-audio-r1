@@ -1,0 +1,1 @@
+The released metadata uses audio_only_input=true, so the default runtime user text is empty. If you want text-assisted inference, use the legacy_question field as the user prompt.

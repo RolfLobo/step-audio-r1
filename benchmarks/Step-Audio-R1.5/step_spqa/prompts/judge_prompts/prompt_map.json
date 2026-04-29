@@ -1,0 +1,14 @@
+{
+  "default": "default.txt",
+  "age": "age.txt",
+  "emotions": "emotions.txt",
+  "event": "event.txt",
+  "gender": "gender.txt",
+  "pitch": "pitch.txt",
+  "rhythm": "rhythm.txt",
+  "scene": "scene.txt",
+  "speed": "speed.txt",
+  "vocalsound": "vocalsound.txt",
+  "voice_styles": "voice_styles.txt",
+  "voice_tone": "voice_tone.txt"
+}

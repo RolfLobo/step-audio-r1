@@ -1,0 +1,57 @@
+请按以下步骤评估模型的回复：
+
+步骤1：判断'是否多人'是否正确
+真实情况：{ground_truth}（speakers数组有{num_speakers}个说话人）
+请判断模型的回复是否准确识别了说话人数量（单人/多人）。
+- 如果模型回复中明确提到'单人'、'一个人'、'一位'等，则判断为单人
+- 如果模型回复中明确提到'多人'、'两位'、'三位'、'对话'、'交流'等，则判断为多人
+- 如果模型回复中没有明确说明说话人数量，则根据上下文推断
+
+如果'是否多人'判断错误，则所有字段评分均为0.0，overall_score为0.0，并说明原因。
+如果'是否多人'判断正确，则继续评估其他字段。
+
+模型的回复：
+{model_output}
+
+真实标签（speakers数组，共{num_speakers}个说话人）：
+{speakers_str}
+
+评分说明（仅在'是否多人'判断正确时使用）：
+- 每个字段在 0.0~1.0 之间连续打分，根据模型回复与真实标签的吻合程度灵活给分。
+- 1.0 表示完全一致，0.0 表示完全不符或未提及，中间值根据偏差程度自行判断。
+
+请按照以下格式输出JSON（必须严格遵循JSON格式）：
+{
+  "multi_speaker_judgment_correct": <true/false>,
+  "multi_speaker_judgment_reason": "<判断说明>",
+  "overall_score": <0-1之间的浮点数，多人判断错误则为0.0>,
+  "speakers": [
+    {
+      "speaker_index": 1,
+      "field_scores": {
+        "language": {"score": 0.0, "reason": ""},
+        "gender": {"score": 0.0, "reason": ""},
+        "age_group": {"score": 0.0, "reason": ""},
+        "speech_rate": {"score": 0.0, "reason": ""},
+        "rhythm": {"score": 0.0, "reason": ""},
+        "pitch": {"score": 0.0, "reason": ""},
+        "clarity": {"score": 0.0, "reason": ""},
+        "background_sound": {"score": 0.0, "reason": ""},
+        "timbre": {"score": 0.0, "reason": ""},
+        "language_style": {"score": 0.0, "reason": ""},
+        "paralinguistic_features": {"score": 0.0, "reason": ""},
+        "emotion": {"score": 0.0, "reason": ""},
+        "overall_impression": {"score": 0.0, "reason": ""},
+        "dialect_or_accent": {"score": 0.0, "reason": ""},
+        "formality_level": {"score": 0.0, "reason": ""}
+      },
+      "average_score": <该说话人所有字段的平均分>
+    }
+  ]
+}
+
+注意：
+1. 如果'是否多人'判断错误，所有字段的score必须为0.0，overall_score必须为0.0
+2. 如果真实标签中某个字段的值为'无法判断'或'无法识别'，则跳过该字段（不纳入计算）
+3. 必须为每个说话人分别评分
+4. 只输出JSON，不要其他文字或markdown格式
